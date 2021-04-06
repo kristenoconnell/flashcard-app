@@ -20,7 +20,7 @@ function CardForm({ formData, handleChange }) {
                     />
             </label>
             <br />
-            <label htmlFor="back" className="text-dark-grey">
+            <label htmlFor="back">
                 Back
                 <br />
                 <textarea

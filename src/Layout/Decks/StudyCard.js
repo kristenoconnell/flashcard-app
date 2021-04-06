@@ -84,7 +84,7 @@ function StudyCard({deck}) {
     }
 
     return (
-        <div>
+        <div className="container">
             <div className="row">
             <h3>Not enough cards.</h3>
             </div>

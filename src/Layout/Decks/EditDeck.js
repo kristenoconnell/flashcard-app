@@ -56,13 +56,22 @@ function EditDeck() {
     return (
         <div>
             <BreadCrumb link={`/decks/${deckId}/edit`} linkName={deck.name} pageName={"Edit"} />
-            <h1>Edit Deck</h1>
-            <br />
+            <div className="container">
+                <div className="row">
+                    <h1>Edit Deck</h1>
+                    <br />
+                </div>
+                <div className="row w-100">
             
-                <DeckForm formData={deck} handleChange={handleChange} handleSubmit={handleSubmit}/>
-                <Link to={`/decks/${deckId}`}><button className="btn btn-secondary mr-1">Cancel</button></Link>
-                <button type="submit" className="btn btn-primary">Save</button>
-        </div>
+                    <DeckForm formData={deck} handleChange={handleChange} handleSubmit={handleSubmit}/>
+                    </div>
+                    <div className="row">
+                    <Link to={`/decks/${deckId}`}><button className="btn btn-secondary mr-1">Cancel</button></Link>
+                    <button type="submit" className="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+       
     )
 }
 
