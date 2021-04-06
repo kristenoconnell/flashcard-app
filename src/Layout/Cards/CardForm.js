@@ -3,13 +3,14 @@ import React from "react";
 function CardForm({ formData, handleChange }) { 
 
     return (
-        <div>
+        <form>
             <label htmlFor="front">
-                Front:
+                Front
                 <br />
                 <textarea 
                     id="front" 
                     name="front" 
+                    className="form-control"
                     value={formData.front} 
                     onChange={handleChange}
                     placeholder="Front of Card"
@@ -19,12 +20,13 @@ function CardForm({ formData, handleChange }) {
                     />
             </label>
             <br />
-            <label htmlFor="back">
-                Back:
+            <label htmlFor="back" className="text-dark-grey">
+                Back
                 <br />
                 <textarea
                     id="back"
                     name="back"
+                    className="form-control"
                     value={formData.back}
                     onChange={handleChange}
                     placeholder="Back of Card"
@@ -33,7 +35,7 @@ function CardForm({ formData, handleChange }) {
                     required
                 />
             </label>
-        </div>
+        </form>
     )
 }
 

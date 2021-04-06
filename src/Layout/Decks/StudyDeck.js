@@ -6,23 +6,25 @@ import StudyCard from "./StudyCard";
 
 function StudyPage(){
     const [deck, setDeck] = useState([]);
-    const {deckId} = useParams();
+    const { deckId } = useParams();
 
     useEffect(() => {
       const loadDeck = async () => {
         const newDeck = await readDeck(deckId);
-        setDeck(newDeck);
+        setDeck(() => newDeck);
       };
       loadDeck();
     }, [deckId]);
   
-  }
-    /*if (deck.length) {
+    if (deck) {
       return (
         <>
-        <BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />
+        {/*<BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />*/}
         <div className="row">
-          <h1>Study: {deck.name}</h1>
+          <h2>Study: {deck.name}</h2>
+        </div>
+          <br />
+        <div className="row">
           <StudyCard cards={deck.cards} />
         </div>
         </>
@@ -30,6 +32,6 @@ function StudyPage(){
     } else {
       return <p>Loading...</p>;
     }
-  }*/
+  }
 
   export default StudyPage;

@@ -11,7 +11,7 @@ function DeckForm({ formData, handleChange }) {
                     type="text"
                     id="name"
                     name="name"
-                    class="form-control"
+                    className="form-control"
                     value={formData.name}
                     onChange={handleChange}
                     style={{ width: "auto"}}
@@ -25,7 +25,7 @@ function DeckForm({ formData, handleChange }) {
                 <textarea
                     id="description"
                     name="description"
-                    class="form-control"
+                    className="form-control"
                     value={formData.description}
                     onChange={handleChange}
                     rows="4"

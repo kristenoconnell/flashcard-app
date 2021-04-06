@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory, useRouteMatch } from "react-router-dom";
 import { readDeck, deleteDeck, listCards, deleteCard } from "../../utils/api/index";
 import CardsList from "../Cards/CardsList";
 
 function Deck() {
-    const { deckId } = useParams;
+    const { deckId } = useParams();
+    const { url } = useRouteMatch();
     const history = useHistory();
+    console.log("url from params", url);
+    console.log("deck id from params", deckId);
     const [deck, setDeck] = useState({});
     //const [cards, setCards] = useState([]);
 
@@ -13,9 +16,12 @@ function Deck() {
     //load deck & cards
     useEffect(() => {
         async function loadDeck() {
-            //console.log(deckId)
+                console.log("deck id from async", deckId)
+                if (deckId) {
                 const loadedDeck = await readDeck(deckId);
-                setDeck(loadedDeck);
+                console.log(loadedDeck);
+                setDeck(()=>loadedDeck);
+                }
                 /*const loadedCards = await listCards(loadedDeck.cards);
                 setCards(loadedCards);
                 console.log(cards);*/
@@ -33,7 +39,8 @@ function Deck() {
     };
 
     //delete a card
-    /*const handleCardDelete = async ({ target }) => {
+    const handleCardDelete = async ({ target }) => {
+        console.log(target);
         const confirm = window.confirm("Delete this card? You will not be able to recover it.");
         if (confirm) {
             const cardDelete = async () => await deleteCard(target.value);
@@ -41,9 +48,9 @@ function Deck() {
             const reloadDeck = await readDeck(deckId);
             setDeck(reloadDeck);
         }
-    }*/
+    }
 
-//if cards.length > 0
+if (deck.id) {
         return (
             <div>
             {/*BREADCRUMB NAV */}
@@ -74,10 +81,12 @@ function Deck() {
                         <button className="btn btn-danger" onClick={handleDeckDelete}><i className="bi bi-trash"></i></button>
                     </div>
                 </div>
-                <CardsList deck={deck} setDeck={setDeck}/>
+                <CardsList deck={deck} handleCardDelete={handleCardDelete} />
                 </div>
             
         )
+      } 
+              return "No deck here! Please create a new deck."
     }
 
 

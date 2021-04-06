@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Common/Header";
 import Home from "./Common/Home";
-import CreateDeck from "./Decks/CreateDeck";
+import NewDeck from "./Decks/CreateDeck";
 import EditDeck from "./Decks/EditDeck";
 import StudyDeck from "./Decks/StudyDeck";
 import Deck from "./Decks/Deck"
+import EditCard from "./Cards/EditCard";
+import NewCard from "./Cards/CreateCard";
+import StudyCard from "./Decks/StudyCard";
 import NotFound from "./NotFound";
 import { listDecks } from "../utils/api/index";
 
@@ -42,7 +45,16 @@ function Layout() {
             <Home decks={decks}/>
           </Route>
           <Route path={"/decks/new"}>
-            <CreateDeck />
+            <NewDeck />
+          </Route>
+          <Route path={"/decks/:deckId/cards/:cardId/edit"}>
+            <EditCard />
+          </Route>
+          <Route path={"/decks/:deckId/cards/:cardId/study"}>
+            <StudyCard/>
+          </Route>
+          <Route path={"/decks/:deckId/cards/new"}>
+            <NewCard />
           </Route>
           <Route path={"/decks/:deckId/edit"}>
             <EditDeck />
@@ -50,8 +62,8 @@ function Layout() {
           <Route path={"/decks/:deckId/study"}>
             <StudyDeck />
           </Route>
-          <Route path={"/decks/:deckId"}>
-            <Deck decks={decks}/>
+          <Route exact path={"/decks/:deckId"}>
+            <Deck />
           </Route>
           <Route>
             <NotFound />

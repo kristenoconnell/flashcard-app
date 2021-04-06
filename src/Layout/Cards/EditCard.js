@@ -10,15 +10,15 @@ function EditCard() {
     const [deck, setDeck] = useState({});
     const [card, setCard] = useState({});
 
-    //load deck
+    //Load deck and card
     useEffect(() => {
-        setDeck({});
         const loadDeck = async () => setDeck(await readDeck(deckId));
         loadDeck();
         const loadCard = async () => setCard(await readCard(cardId));
         loadCard();
     }, [deckId, cardId])
 
+    //Create change handler for form
     const handleChange = ({ target }) => {
         setCard({
             ...card,
@@ -26,6 +26,7 @@ function EditCard() {
         });
     };
 
+    //Create submit handler to save edits
     const handleSubmit = (event) => {
         event.preventDefault();
         async function updateCardData() {
@@ -45,9 +46,9 @@ function EditCard() {
         <div>
             {/*TODO: BREADCRUMB */}
             <div className="row w-100">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form-group">
                 <CardForm formData={card} handleChange={handleChange} />
-                <Link to={`/decks/${deckId}`} className="btn btn-secondary">Cancel</Link>
+                <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-1">Cancel</Link>
                 <button type="submit" className="btn btn-primary">Save</button>
             </form>
             </div>

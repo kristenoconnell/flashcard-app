@@ -43,32 +43,33 @@ function NewCard() {
     }
 
     useEffect(() => {
-        const abortController = new AbortController();
   
         async function loadDeck() {
-            try {
-                const loadedDeck = await readDeck(deckId, {signal: abortController.signal});
-                setDeck(loadedDeck);
-            } catch (error) {
-                if (error.name!=="AbortError") {
-                    throw error;
-                }
-            }
+         
+                const loadedDeck = await readDeck(deckId);
+                setDeck(() => loadedDeck);
         }
         loadDeck();
-        return () => abortController.abort();
+
     }, [deckId])
 
   
         return (
             <div>
-                <BreadCrumb link={`/decks/${deck.id}`} linkName={deck.name} pageName={"Add Card"} />
-                <div className="row d-flex">
-                    <h1>{deck.name}: Add Card</h1>
-                        <form className="row" onSubmit={handleSubmit}>
+                {/*<BreadCrumb link={`/decks/${deck.id}`} linkName={deck.name} pageName={"Add Card"} />*/}
+                    <div className="row">
+                    <h2>{deck.name}: Add Card</h2>
+                    <br />
+                    <br />
+                    </div>
+                    <div className="row">
+                        <form onSubmit={handleSubmit}>
                             <CardForm formData={formData} handleChange={handleChange} />
-                                <Link to={`/decks/${deckId}`} className="btn btn-secondary">Done</Link>
+                            <br />
+                            <div className="row">
+                                <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-1">Done</Link>
                             <button type="submit" className="btn btn-primary">Save</button>
+                            </div>
                         </form>
                     </div>
             </div>

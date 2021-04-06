@@ -4,8 +4,8 @@ import StudyDeck from "./StudyDeck";
 import { Link, Route, Switch, useParams } from "react-router-dom";
 import { listDecks, deleteDeck } from "../../utils/api/index";
 
-function ListDecks({ decks, setDecks }) {
-        const { deckId } = useParams();
+function ListDecks({ decks }) {
+        
 
 
     const handleDelete = async ({ target }) => {
