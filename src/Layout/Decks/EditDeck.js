@@ -55,7 +55,7 @@ function EditDeck() {
 
     return (
         <div>
-            {/*TODO: BREADCRUMB NAV */}
+            <BreadCrumb link={`/decks/${deckId}/edit`} linkName={deck.name} pageName={"Edit"} />
             <h1>Edit Deck</h1>
             <br />
             

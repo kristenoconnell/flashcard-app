@@ -3,8 +3,6 @@ import { useHistory, Link, useParams } from "react-router-dom";
 import { listCards } from "../../utils/api/index";
 
 
-
-
 function StudyCard({deck}) {
     const initialState = {
         onBack: false,
@@ -64,7 +62,7 @@ function StudyCard({deck}) {
     if (deck.cards) {
         return (
             <div>
-            <div className="card">
+            <div className="card w-100">
                 <div className="card-body">
                     <h4 className="card-title">
                         Card {studySession.currentCard + 1} of {deck.cards.length}
@@ -91,7 +89,7 @@ function StudyCard({deck}) {
             <h3>Not enough cards.</h3>
             </div>
             <div className="row my-2">
-                <p>You need at least 3 cards to study. This deck has {deck.cards.length} cards.</p>
+                <p>You need at least 3 cards to study. This deck has {deck.cards} cards.</p>
             </div>
             <div className="row">
                     <Link to={`/decks/${deckId}/cards/new`}>

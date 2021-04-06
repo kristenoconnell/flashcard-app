@@ -19,13 +19,13 @@ function StudyPage(){
     if (deck) {
       return (
         <>
-        {/*<BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />*/}
+        <BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={"Study"} />
         <div className="row">
           <h2>Study: {deck.name}</h2>
         </div>
           <br />
         <div className="row">
-          <StudyCard cards={deck.cards} />
+          <StudyCard deck={deck} />
         </div>
         </>
       );

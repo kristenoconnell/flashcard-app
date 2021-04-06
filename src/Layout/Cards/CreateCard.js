@@ -56,7 +56,7 @@ function NewCard() {
   
         return (
             <div>
-                {/*<BreadCrumb link={`/decks/${deck.id}`} linkName={deck.name} pageName={"Add Card"} />*/}
+                <BreadCrumb link={`/decks/${deck.id}`} linkName={deck.name} pageName={"Add Card"} />
                     <div className="row">
                     <h2>{deck.name}: Add Card</h2>
                     <br />

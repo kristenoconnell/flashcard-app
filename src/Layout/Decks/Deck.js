@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory, useRouteMatch } from "react-router-dom";
-import { readDeck, deleteDeck, listCards, deleteCard } from "../../utils/api/index";
+import { readDeck, deleteDeck, deleteCard } from "../../utils/api/index";
+import BreadCrumb from "../Common/BreadCrumb";
 import CardsList from "../Cards/CardsList";
 
 function Deck() {
@@ -53,7 +54,7 @@ function Deck() {
 if (deck.id) {
         return (
             <div>
-            {/*BREADCRUMB NAV */}
+            <BreadCrumb link={`/decks/${deckId}`} linkName={deck.name} pageName={deck.name} />
                 <h3>{deck.name}</h3>
                 <p>{deck.description}</p>
                  <div className="row justify-content-between">

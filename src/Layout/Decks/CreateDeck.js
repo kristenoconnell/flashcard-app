@@ -46,7 +46,7 @@ function NewDeck() {
 
     return (
         <div>
-            {/*TODO: BREADCRUMB */}
+             <BreadCrumb link={`/decks/new`} pageName={"Create Deck"} />
             <div>
                 <h1>Create Deck</h1>
                 <br/>
