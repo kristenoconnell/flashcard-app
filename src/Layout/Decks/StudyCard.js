@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { listCards } from "../../utils/api/index";
+import { listCards, readDeck } from "../../utils/api/index";
 
 
-function StudyCard({deck}) {
+function StudyCard({cards}) {
     const initialState = {
         onBack: false,
         currentCard: 0,
@@ -11,21 +11,12 @@ function StudyCard({deck}) {
 
     const { deckId } = useParams();
     const history = useHistory();
-    const [deckCards, setDeckCards] = useState([]);
     const [studySession, setStudySession] = useState({...initialState});
-
-    useEffect(() => {
-        const loadCards = async() => setDeckCards(() => deck.cards);
-        console.log(deckCards);
-        loadCards();
-    }, [deckCards, deck.cards])
-    
-    console.log("deck cards", deckCards);
-    
+   
     
     const handleNext = () => {
         //Go to next card until the last card is reached
-        if (studySession.currentCard < deckCards.length - 1) {
+        if (studySession.currentCard < cards.length - 1) {
             setStudySession({
                 ...studySession,
                 currentCard: studySession.currentCard + 1,
@@ -57,20 +48,19 @@ function StudyCard({deck}) {
         }
     }
     
-
-
-    if (deck.cards) {
+   
+    if (cards.length > 2) {
         return (
-            <div>
+           <div className="container">
             <div className="card w-100">
                 <div className="card-body">
                     <h4 className="card-title">
-                        Card {studySession.currentCard + 1} of {deck.cards.length}
+                        Card {studySession.currentCard + 1} of {cards.length}
                     </h4>
                     <p className="card-text font-weight-lighter">
                         {studySession.onBack 
-                        ? deck.cards[studySession.currentCard].back
-                        : deck.cards[studySession.currentCard].front
+                        ? cards[studySession.currentCard].back
+                        : cards[studySession.currentCard].front
                         }                      
                     </p>
                     <button className="btn btn-secondary mr-1" onClick={handleFlip}>Flip</button>
@@ -79,17 +69,14 @@ function StudyCard({deck}) {
                     )}
                 </div>
             </div>
-           </div>
-        )
-    }
-
-    return (
-        <div className="container">
-            <div className="row">
-            <h3>Not enough cards.</h3>
             </div>
+        )
+    } else {
+        return (
+            <>
+            <h3>Not enough cards.</h3>
             <div className="row my-2">
-                <p>You need at least 3 cards to study. This deck has {deck.cards} cards.</p>
+                <p>You need at least 3 cards to study. This deck has {cards} cards.</p>
             </div>
             <div className="row">
                     <Link to={`/decks/${deckId}/cards/new`}>
@@ -98,9 +85,10 @@ function StudyCard({deck}) {
                                 Add Card
                             </button>
                         </Link>
-            </div>
-        </div>
-    )
+                </div>
+            </>
+        )
+    }
 }
 
 export default StudyCard;

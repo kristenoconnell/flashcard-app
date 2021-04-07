@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Card({ card, handleCardDelete }) {
     return (
-        <>
+        <div className="container">
         <div className="row text-center">
             <div className="card">
                 <div className="card-body row">
@@ -20,7 +20,7 @@ function Card({ card, handleCardDelete }) {
                 </div>
             </div>
         </div>
-        </>
+        </div>
     )
 }
 

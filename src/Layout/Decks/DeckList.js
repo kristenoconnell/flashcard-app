@@ -59,14 +59,6 @@ function ListDecks({ decks }) {
                             </div>
                         </div>
                     ))}
-                {/*<Switch>
-                     <Route path={"/decks/:deckId/study"}>
-                         <StudyDeck />
-                    </Route>   
-                    <Route path={"/decks/:deckId"}>
-                        <Deck />
-                    </Route>
-                </Switch>  */}
                 </div>
                  )
 

@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory, useRouteMatch } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../../utils/api/index";
 import BreadCrumb from "../Common/BreadCrumb";
 import CardsList from "../Cards/CardsList";
 
 function Deck() {
     const { deckId } = useParams();
-    const { url } = useRouteMatch();
     const history = useHistory();
-    console.log("url from params", url);
-    console.log("deck id from params", deckId);
     const [deck, setDeck] = useState({});
-    //const [cards, setCards] = useState([]);
 
 
     //load deck & cards
     useEffect(() => {
         async function loadDeck() {
-                console.log("deck id from async", deckId)
                 if (deckId) {
                 const loadedDeck = await readDeck(deckId);
-                console.log(loadedDeck);
+                console.log(loadedDeck.cards.length);
                 setDeck(()=>loadedDeck);
                 }
-                /*const loadedCards = await listCards(loadedDeck.cards);
-                setCards(loadedCards);
-                console.log(cards);*/
             }
         loadDeck();
     }, [deckId]);
@@ -41,7 +33,6 @@ function Deck() {
 
     //delete a card
     const handleCardDelete = async ({ target }) => {
-        console.log(target);
         const confirm = window.confirm("Delete this card? You will not be able to recover it.");
         if (confirm) {
             const cardDelete = async () => await deleteCard(target.value);

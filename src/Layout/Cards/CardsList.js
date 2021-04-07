@@ -14,14 +14,9 @@ import Card from "./Card";
 //plus add card buttons & corresponding functionality and routes. 
 function CardsList({ deck, handleCardDelete }) {
     const { deckId } = useParams();
-    
-    
-    console.log(deckId);
-    console.log(deck);
-
 
         return (
-        <>
+        <div className="container">
           <h2>Cards</h2>
           <div className="card-list">
               {deck.cards.map((card) => (
@@ -50,7 +45,7 @@ function CardsList({ deck, handleCardDelete }) {
                   </div>
               ))}
               </div>
-            </>
+            </div>
         )
     };
 
