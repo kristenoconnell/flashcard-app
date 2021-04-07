@@ -39,16 +39,9 @@ function EditDeck() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         async function updateDeckData() {
-            try {
                 await updateDeck(deck);
-                history.push(`decks/${deckId}`)
-            } catch (error) {
-                if (error.name!=="AbortError") {
-                    throw error;
-                }
-            }
+                history.push(`/decks/${deck.id}`);
         }
         updateDeckData();
     }
@@ -67,7 +60,7 @@ function EditDeck() {
                     </div>
                     <div className="row">
                     <Link to={`/decks/${deckId}`}><button className="btn btn-secondary mr-1">Cancel</button></Link>
-                    <button type="submit" className="btn btn-primary">Save</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
                     </div>
                 </div>
             </div>
