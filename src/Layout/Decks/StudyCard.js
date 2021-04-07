@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { listCards, readDeck } from "../../utils/api/index";
 
 
 function StudyCard({cards}) {

@@ -3,12 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import DeckForm from "./DeckForm";
 import BreadCrumb from "../Common/BreadCrumb";
 import { createDeck } from "../../utils/api/index";
-//DONE 
-//page renders under url
-//cancel button returns to home
-//submit button creates new deck and goes to new deck page
-//TODO: Breadcrumb
-//TODO: reformat width of form 
+
 function NewDeck() {
 
     const initialFormState = {

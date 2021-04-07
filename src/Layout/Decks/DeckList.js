@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Deck from "./Deck";
-import StudyDeck from "./StudyDeck";
-import { Link, Route, Switch, useParams } from "react-router-dom";
-import { listDecks, deleteDeck } from "../../utils/api/index";
+import React from "react";
+import { Link } from "react-router-dom";
+import { deleteDeck } from "../../utils/api/index";
 
 function ListDecks({ decks }) {
         

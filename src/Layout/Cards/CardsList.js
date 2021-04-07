@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
-import Card from "./Card";
 
-//load the deck in Deck.js
-//import deck into cards as prop
-//cardslist is a child of the deck
-//update the state of the deck in the parent component
-//set cards by deck.cards --> do i need to load the cards here? because i can 
-//based off deckId
-
-//map the cards list
-//to display cards (front & back)
-//plus add card buttons & corresponding functionality and routes. 
 function CardsList({ deck, handleCardDelete }) {
     const { deckId } = useParams();
 
