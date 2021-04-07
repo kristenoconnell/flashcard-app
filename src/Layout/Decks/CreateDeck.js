@@ -45,13 +45,11 @@ function NewDeck() {
             <div>
                 <h1>Create Deck</h1>
                 <br/>
-                    <form onSubmit={handleSubmit}>
                         <DeckForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
                         <br />
                         <br />
                         <Link to="/"><button className="btn btn-secondary mr-1">Cancel</button></Link> 
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+                        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
                 </div>
         </div>
     )

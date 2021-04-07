@@ -1,15 +1,29 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { deleteCard, updateDeck } from "../../utils/api/index";
 
-function CardsList({ deck, handleCardDelete }) {
+function CardsList({ deck }) {
     const { deckId } = useParams();
+
+
+       //delete a card
+       const handleCardDelete = async ({ target }) => {
+        const confirm = window.confirm("Delete this card? You will not be able to recover it.");
+        if (confirm) {
+            console.log("target", target);
+            console.log("target value", target.value);
+            deleteCard(target.value)
+            .then(updateDeck(deckId))
+            .then(window.location.reload());
+        }
+    }
 
         return (
         <div className="container">
           <h2>Cards</h2>
           <div className="card-list">
               {deck.cards.map((card) => (
-                  <div className="card">
+                  <div className="card" key={card.id}>
                       <div className="card-body">
                           <div className="container">
                               <div className="row justify-content-start my-2">
@@ -26,7 +40,7 @@ function CardsList({ deck, handleCardDelete }) {
                                   </div>
                                   <div className="col-3 pt-2 pb-1">
                                       <Link to={`/decks/${deckId}/cards/${card.id}/edit`}><button className="btn btn-secondary mr-1"><i className="bi bi-pencil mr-1"></i>Edit</button></Link>
-                                      <button value={card.id} onClick={handleCardDelete} className="btn btn-danger"><i className="bi bi-trash"></i></button>
+                                      <button onClick={handleCardDelete} value={card.id} className="btn btn-danger"><i value={card.id}className="bi bi-trash"></i></button>
                                   </div>
                               </div>
                           </div>

@@ -11,7 +11,7 @@ function NewCard() {
         front: "",
         back: "",
         deckId: deckId,
-        id: "",
+        id: 0,
 
     };
 
@@ -32,7 +32,7 @@ function NewCard() {
         async function cardCreate() {
             try {
                 await createCard(deckId, formData);
-                setFormData({initialFormState});
+                setFormData({...initialFormState});
             } catch (error) {
                 if (error.name!=="AbortError") {
                     throw error;
@@ -63,16 +63,14 @@ function NewCard() {
                     <br />
                     </div>
                     <div className="row">
-                        <form onSubmit={handleSubmit}>
-                            <CardForm formData={formData} handleChange={handleChange} />
+                            <CardForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
                             <br />
+                        </div>
                             <div className="row">
                                 <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-1">Done</Link>
-                            <button type="submit" className="btn btn-primary">Save</button>
+                            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
                             </div>
-                        </form>
                     </div>
-            </div>
         )
     }
 

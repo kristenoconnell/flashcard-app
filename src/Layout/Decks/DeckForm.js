@@ -1,9 +1,9 @@
 import React from "react";
 
-function DeckForm({ formData, handleChange }) {
+function DeckForm({ formData, handleChange, handleSubmit }) {
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="name">
                 Name:
                 <br />

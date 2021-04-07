@@ -1,9 +1,9 @@
 import React from "react";
 
-function CardForm({ formData, handleChange }) { 
+function CardForm({ formData, handleChange, handleSubmit }) { 
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="front">
                 Front
                 <br />

@@ -46,11 +46,11 @@ function EditCard() {
         <div>
             <BreadCrumb link={`/decks/${deckId}`} linkName={`Deck ${deck.name}`} pageName={`Edit Card ${cardId}`} />
             <div className="row w-100">
-            <form onSubmit={handleSubmit} className="form-group">
-                <CardForm formData={card} handleChange={handleChange} />
+                <CardForm formData={card} handleChange={handleChange} handleSubmit={handleSubmit}/>
+            </div>
+            <div className="row w-100">
                 <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-1">Cancel</Link>
-                <button type="submit" className="btn btn-primary">Save</button>
-            </form>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { readDeck, deleteDeck, deleteCard } from "../../utils/api/index";
+import { readDeck, deleteDeck } from "../../utils/api/index";
 import BreadCrumb from "../Common/BreadCrumb";
 import CardsList from "../Cards/CardsList";
 
@@ -15,7 +15,6 @@ function Deck() {
         async function loadDeck() {
                 if (deckId) {
                 const loadedDeck = await readDeck(deckId);
-                console.log(loadedDeck.cards.length);
                 setDeck(()=>loadedDeck);
                 }
             }
@@ -31,16 +30,6 @@ function Deck() {
         }
     };
 
-    //delete a card
-    const handleCardDelete = async ({ target }) => {
-        const confirm = window.confirm("Delete this card? You will not be able to recover it.");
-        if (confirm) {
-            const cardDelete = async () => await deleteCard(target.value);
-            cardDelete();
-            const reloadDeck = await readDeck(deckId);
-            setDeck(reloadDeck);
-        }
-    }
 
 if (deck.id) {
         return (
@@ -73,7 +62,7 @@ if (deck.id) {
                         <button className="btn btn-danger" onClick={handleDeckDelete}><i className="bi bi-trash"></i></button>
                     </div>
                 </div>
-                <CardsList deck={deck} handleCardDelete={handleCardDelete} />
+                <CardsList deck={deck} />
                 </div>
             
         )

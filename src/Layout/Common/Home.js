@@ -7,7 +7,7 @@ function Home({ decks, setDecks }) {
     return (
         <div>
             <div>
-                <Link to="/decks/new"><button className="btn btn-primary btn-large"><i class="bi bi-plus"></i>Create Deck</button></Link>
+                <Link to="/decks/new"><button className="btn btn-primary btn-large"><i className="bi bi-plus"></i>Create Deck</button></Link>
             </div>
              <ListDecks decks={decks} setDecks={setDecks}/>
         </div>
