@@ -10,8 +10,6 @@ function CardsList({ deck }) {
        const handleCardDelete = async ({ target }) => {
         const confirm = window.confirm("Delete this card? You will not be able to recover it.");
         if (confirm) {
-            console.log("target", target);
-            console.log("target value", target.value);
             deleteCard(target.value)
             .then(updateDeck(deckId))
             .then(window.location.reload());
